@@ -10,8 +10,10 @@ if __name__ == '__main__':
     r = requests.get(URL)
 #    html = BS(r.content, 'html.parser')
     soup = BS(r.content, "lxml")
-    menu = soup.find("div", class_="wrapper").find("a", class_="link darkblue").find_all("span", class_="m")
-    print(menu)
+    menu = soup.find("div", class_="wrapper").find_all("span", class_="m")
+    for i in menu:
+        print(i.text)
+    
     with open('temp.html', 'w') as f:
         text = f.write(menu)
         
